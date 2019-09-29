@@ -10,16 +10,13 @@ public class BatterySnap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (battery != null)
-        {
-            Scale = battery.transform.localScale;
-        }
+        Scale = new Vector3(0.02f, 0.04f, 0.02f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (battery != null && !battery.GetComponent<FixedJoint>())
+        if (battery != null && !battery.GetComponent<InteractableObject>().isBeingHeld)
         {
             battery.transform.parent = this.gameObject.transform;
             battery.transform.localPosition = Vector3.zero;
@@ -32,16 +29,15 @@ public class BatterySnap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (battery == null && other.gameObject.tag == "Battery")
+        if (battery == null && /*other.gameObject.tag == "Battery" )*/(other.gameObject.tag == "RedBattery" || other.gameObject.tag == "BlueBattery" || other.gameObject.tag == "GreenBattery"))
         {
-            Scale = other.transform.localScale;
             battery = other.gameObject;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == battery && other.gameObject.tag == "Battery")
+        if (other.gameObject == battery && /*other.gameObject.tag == "Battery" )*/(other.gameObject.tag == "RedBattery" || other.gameObject.tag == "BlueBattery" || other.gameObject.tag == "GreenBattery"))
         {
             battery = null;
             other.transform.parent = null;

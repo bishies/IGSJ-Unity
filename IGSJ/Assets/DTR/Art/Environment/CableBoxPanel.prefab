@@ -100,6 +100,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5292815492381762094, guid: 441cea577d4e1dc49aae420afed8c4ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 441cea577d4e1dc49aae420afed8c4ef, type: 3}
 --- !u!4 &3419171354918019171 stripped
@@ -119,6 +124,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlueCableBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429572298126275480, guid: 048fb847055bdba4eaed445bdaf05a33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7429572298126275481, guid: 048fb847055bdba4eaed445bdaf05a33,
         type: 3}
@@ -175,6 +185,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1457699195831713613, guid: 048fb847055bdba4eaed445bdaf05a33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3921899258343853825, guid: 048fb847055bdba4eaed445bdaf05a33,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c1cb3de4fabab747bcddb3a6cd73d55, type: 2}
+    - target: {fileID: 1933291163602995068, guid: 048fb847055bdba4eaed445bdaf05a33,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c1cb3de4fabab747bcddb3a6cd73d55, type: 2}
+    - target: {fileID: 3959436390618817656, guid: 048fb847055bdba4eaed445bdaf05a33,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c1cb3de4fabab747bcddb3a6cd73d55, type: 2}
+    - target: {fileID: 6130480415328224659, guid: 048fb847055bdba4eaed445bdaf05a33,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c1cb3de4fabab747bcddb3a6cd73d55, type: 2}
+    - target: {fileID: 2526750933825693330, guid: 048fb847055bdba4eaed445bdaf05a33,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4422bf935b5f5b14f9148100dfb3760a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 048fb847055bdba4eaed445bdaf05a33, type: 3}
 --- !u!4 &5881266756499808071 stripped
@@ -194,6 +234,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GreenCableBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895789283404045563, guid: 383670b6b49be114a9bda643fda5e827,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2895789283404045562, guid: 383670b6b49be114a9bda643fda5e827,
         type: 3}
@@ -250,6 +295,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6561186193346891822, guid: 383670b6b49be114a9bda643fda5e827,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744212833031184482, guid: 383670b6b49be114a9bda643fda5e827,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8b987cb2ee56057459455e6559c93ea5, type: 2}
+    - target: {fileID: 6188125896507729951, guid: 383670b6b49be114a9bda643fda5e827,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8b987cb2ee56057459455e6559c93ea5, type: 2}
+    - target: {fileID: 8774828251888388891, guid: 383670b6b49be114a9bda643fda5e827,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8b987cb2ee56057459455e6559c93ea5, type: 2}
+    - target: {fileID: 1884504464789383920, guid: 383670b6b49be114a9bda643fda5e827,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8b987cb2ee56057459455e6559c93ea5, type: 2}
+    - target: {fileID: 7792387549596043761, guid: 383670b6b49be114a9bda643fda5e827,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c0fc62e411d5c9d4a923fb181a506023, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 383670b6b49be114a9bda643fda5e827, type: 3}
 --- !u!4 &1269529706755427358 stripped

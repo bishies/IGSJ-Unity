@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class MakePanel : MonoBehaviour
 {
+    public GameObject TOP_ROW;
+    public GameObject MIDDLE_ROW;
+    public GameObject BOTTOM_ROW;
+
+    public GameObject Red_wire;
+    public GameObject Green_wire;
+    public GameObject Blue_wire;
+
     enum PanelColor
     {
         Red,
@@ -49,7 +57,12 @@ public class MakePanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(Top == Top_ans && Mid == Mid_ans && Bot == Bot_ans)
+        {
+            //correct!
+            // do things
+            Destroy(this.gameObject);
+        }
     }
 
     private void MakeRedPanel()

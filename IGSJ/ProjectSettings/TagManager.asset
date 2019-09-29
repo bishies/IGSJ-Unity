@@ -8,6 +8,9 @@ TagManager:
   - projectile
   - Interactable
   - Battery
+  - GreenBattery
+  - RedBattery
+  - BlueBattery
   layers:
   - Default
   - TransparentFX
