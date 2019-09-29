@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Tutorial : MonoBehaviour
 {
-
-    public string gameScene;
     public void PlayGame ()
     {
         StartCoroutine(DelayedPlayGame());
@@ -15,6 +13,6 @@ public class Tutorial : MonoBehaviour
     IEnumerator DelayedPlayGame()
     {
         yield return new WaitForSeconds(0.15f);
-        SceneManager.LoadScene(gameScene);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
