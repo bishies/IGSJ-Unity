@@ -5,8 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class Tutorial : MonoBehaviour
 {
+
+    public string gameScene;
     public void PlayGame ()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(DelayedPlayGame());
+    }
+
+    IEnumerator DelayedPlayGame()
+    {
+        yield return new WaitForSeconds(0.15f);
+        SceneManager.LoadScene(gameScene);
     }
 }
