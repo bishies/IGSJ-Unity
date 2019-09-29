@@ -3,7 +3,37 @@ guid: bbedede2e448ecf4088e0114258a19ad
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: 526dd2129ba114646b2ffd2cb7a6a704, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SaucerPaint
+    second: {fileID: 2100000, guid: 5b9fc0053c2246948ab61dec08cb4077, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Yellow
+    second: {fileID: 2100000, guid: fc6d0ed6c96300b4a8ef56e36a9ba533, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn1
+    second: {fileID: 2100000, guid: 24ca5a5493611c1418ac661cb443085e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 27ba2119f3c027944a5bffbed8a6d7cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: white
+    second: {fileID: 2100000, guid: e8e32c3b7eebbcf43b2e1184f8925fc2, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

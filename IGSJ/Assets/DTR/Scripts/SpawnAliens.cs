@@ -40,7 +40,7 @@ public class SpawnAliens : MonoBehaviour
         if(Time.timeScale != 0.0f)
         {
             GameObject spawned = Instantiate(SpawnableAliens[Random.Range(0, SpawnableAliens.Count)], SpawnPoint(), Quaternion.Euler(Random.Range(0,360), Random.Range(0, 360), Random.Range(0, 360)));
-            spawned.GetComponent<Rigidbody>().AddForce(transform.up * SpawnPower);
+            spawned.GetComponent<Rigidbody>().AddForce(-transform.up * SpawnPower);
         }
         
 
