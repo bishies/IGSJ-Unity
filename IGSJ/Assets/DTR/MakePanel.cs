@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class MakePanel : MonoBehaviour
 {
-    public GameObject TOP_ROW;
-    public GameObject MIDDLE_ROW;
-    public GameObject BOTTOM_ROW;
+    public GameObject RedPanel;
+    public GameObject GreenPanel;
+    public GameObject BluePanel;
+    private GameObject PanelInUse;
 
+    private BatterySnap TOP_ROW;
+    private BatterySnap MIDDLE_ROW;
+    private BatterySnap BOTTOM_ROW;
+    
     public GameObject Red_wire;
     public GameObject Green_wire;
     public GameObject Blue_wire;
+
+    private bool isDone = false;
 
     enum PanelColor
     {
@@ -32,10 +39,10 @@ public class MakePanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        panel = (PanelColor )Random.Range(0, 2);
-        Top = (RowWire) Random.Range(0, 3);
-        Mid = (RowWire) Random.Range(4, 7);
-        Bot = (RowWire) Random.Range(8, 11);
+        panel = (PanelColor) ((int) Random.Range(0, 98) / 33);
+        Top = (RowWire) ((int)Random.Range(0, 99) / 25);
+        Mid = (RowWire) (((int)Random.Range(0, 99) / 25) + 4);
+        Bot = (RowWire) (((int)Random.Range(0, 99) / 25) + 8);
 
         switch(panel)
         {
@@ -52,23 +59,101 @@ public class MakePanel : MonoBehaviour
                 print("Something bad happened when creating panel!");
                 break;
         }
+
+        switch(Top)
+        {
+            case RowWire.TopR:
+                TOP_ROW.battery = Instantiate(Red_wire, new Vector3(0, 0, 0), Quaternion.identity);
+                break;
+            case RowWire.TopG:
+                TOP_ROW.battery = Instantiate(Green_wire, new Vector3(0, 0, 0), Quaternion.identity);
+                break;
+            case RowWire.TopB:
+                TOP_ROW.battery = Instantiate(Blue_wire, new Vector3(0, 0, 0), Quaternion.identity);
+                break;
+            case RowWire.TopN:
+            default:
+                TOP_ROW.battery = null;
+                break;
+        }
+
+        switch (Mid)
+        {
+            case RowWire.MidR:
+                MIDDLE_ROW.battery = Instantiate(Red_wire, new Vector3(0, 0, 0), Quaternion.identity);
+                break;
+            case RowWire.MidG:
+                MIDDLE_ROW.battery = Instantiate(Green_wire, new Vector3(0, 0, 0), Quaternion.identity);
+                break;
+            case RowWire.MidB:
+                MIDDLE_ROW.battery = Instantiate(Blue_wire, new Vector3(0, 0, 0), Quaternion.identity);
+                break;
+            case RowWire.MidN:
+            default:
+                MIDDLE_ROW.battery = null;
+                break;
+        }
+
+        switch (Bot)
+        {
+            case RowWire.BotR:
+                BOTTOM_ROW.battery = Instantiate(Red_wire, new Vector3(0, 0, 0), Quaternion.identity);
+                break;
+            case RowWire.BotG:
+                BOTTOM_ROW.battery = Instantiate(Green_wire, new Vector3(0, 0, 0), Quaternion.identity);
+                break;
+            case RowWire.BotB:
+                BOTTOM_ROW.battery = Instantiate(Blue_wire, new Vector3(0, 0, 0), Quaternion.identity);
+                break;
+            case RowWire.BotN:
+            default:
+                BOTTOM_ROW.battery = null;
+                break;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isDone) return;
+
         if(Top == Top_ans && Mid == Mid_ans && Bot == Bot_ans)
         {
+            isDone = true;
             //correct!
             // do things
-            Destroy(this.gameObject);
+            StartCoroutine(PanelComplete());
         }
+
+        if (TOP_ROW.battery)
+        {
+            if(TOP_ROW.battery.tag == "RedBattery") Top = RowWire.TopR;
+            else if (TOP_ROW.battery.tag == "GreenBattery") Top = RowWire.TopG;
+            else if (TOP_ROW.battery.tag == "BlueBattery") Top = RowWire.TopB;
+        }
+        else Top = RowWire.TopN;
+
+        if (MIDDLE_ROW.battery)
+        {
+            if (MIDDLE_ROW.battery.tag == "RedBattery") Mid = RowWire.MidR;
+            else if (MIDDLE_ROW.battery.tag == "GreenBattery") Mid = RowWire.MidG;
+            else if (MIDDLE_ROW.battery.tag == "BlueBattery") Mid = RowWire.MidB;
+        }
+        else Mid = RowWire.MidN;
+
+        if (BOTTOM_ROW.battery)
+        {
+            if (BOTTOM_ROW.battery.tag == "RedBattery") Bot = RowWire.BotR;
+            else if (BOTTOM_ROW.battery.tag == "GreenBattery") Bot = RowWire.BotG;
+            else if (BOTTOM_ROW.battery.tag == "BlueBattery") Bot = RowWire.BotB;
+        }
+        else Bot = RowWire.BotN;
     }
 
     private void MakeRedPanel()
     {
-        if (Top == RowWire.TopR) Top = RowWire.TopN;
-        if (Mid == RowWire.MidR) Mid = RowWire.MidN;
+        if (Top == RowWire.TopR) Top = RowWire.TopB;
+        if (Mid == RowWire.MidR) Mid = RowWire.MidG;
         if (Bot == RowWire.BotR) Bot = RowWire.BotN;
 
         // If there are no wires; place red wire in the middle row
@@ -94,13 +179,23 @@ public class MakePanel : MonoBehaviour
             Mid_ans = RowWire.MidN;
             Bot_ans = RowWire.BotN;
         }
+
+        // set which panel to show
+        RedPanel.SetActive(true);
+        GreenPanel.SetActive(false);
+        BluePanel.SetActive(false);
+        PanelInUse = RedPanel;
+
+        TOP_ROW = RedPanel.transform.GetChild(0).gameObject.GetComponent<BatterySnap>();
+        MIDDLE_ROW = RedPanel.transform.GetChild(1).gameObject.GetComponent<BatterySnap>();
+        BOTTOM_ROW = RedPanel.transform.GetChild(2).gameObject.GetComponent<BatterySnap>();        
     }
 
     private void MakeGreenPanel()
     {
-        if (Top == RowWire.TopG) Top = RowWire.TopN;
-        if (Mid == RowWire.MidG) Mid = RowWire.MidN;
-        if (Bot == RowWire.BotG) Bot = RowWire.BotN;
+        if (Top == RowWire.TopG) Top = RowWire.TopR;
+        if (Mid == RowWire.MidG) Mid = RowWire.MidB;
+        if (Bot == RowWire.BotG) Bot = RowWire.BotB;
 
         // If red wire in middle row; remove all wires and place green wire in top row
         if (Mid == RowWire.MidR)
@@ -133,13 +228,23 @@ public class MakePanel : MonoBehaviour
             Mid_ans = Mid;
             Bot_ans = RowWire.BotG;
         }
+
+        // set which panel to show
+        RedPanel.SetActive(false);
+        GreenPanel.SetActive(true);
+        BluePanel.SetActive(false);
+        PanelInUse = GreenPanel;
+
+        TOP_ROW = GreenPanel.transform.GetChild(0).gameObject.GetComponent<BatterySnap>();
+        MIDDLE_ROW = GreenPanel.transform.GetChild(1).gameObject.GetComponent<BatterySnap>();
+        BOTTOM_ROW = GreenPanel.transform.GetChild(2).gameObject.GetComponent<BatterySnap>();
     }
 
     private void MakeBluePanel()
     {
         if (Top == RowWire.TopB) Top = RowWire.TopN;
-        if (Mid == RowWire.MidB) Mid = RowWire.MidN;
-        if (Bot == RowWire.BotB) Bot = RowWire.BotN;
+        if (Mid == RowWire.MidB) Mid = RowWire.MidG;
+        if (Bot == RowWire.BotB) Bot = RowWire.BotR;
 
         // If there is exactly one red wire; remove it and replace it with a blue wire
         if (Top == RowWire.TopR && Mid != RowWire.MidR && Bot != RowWire.BotR)
@@ -186,5 +291,24 @@ public class MakePanel : MonoBehaviour
             Mid_ans = Mid;
             Bot_ans = RowWire.BotB;
         }
+
+        // set which panel to show
+        RedPanel.SetActive(false);
+        GreenPanel.SetActive(false);
+        BluePanel.SetActive(true);
+        PanelInUse = BluePanel;
+
+        TOP_ROW = BluePanel.transform.GetChild(0).gameObject.GetComponent<BatterySnap>();
+        MIDDLE_ROW = BluePanel.transform.GetChild(1).gameObject.GetComponent<BatterySnap>();
+        BOTTOM_ROW = BluePanel.transform.GetChild(2).gameObject.GetComponent<BatterySnap>();        
+    }
+
+    IEnumerator PanelComplete()
+    {
+        PanelInUse.transform.GetChild(3).gameObject.GetComponent<TextMesh>().text = "DONE!";
+        PanelInUse.transform.GetChild(3).gameObject.GetComponent<TextMesh>().color = Color.black;
+        PanelInUse.transform.GetChild(4).gameObject.SetActive(false);
+        yield return new WaitForSeconds(5);
+        PanelInUse.SetActive(false);
     }
 }
