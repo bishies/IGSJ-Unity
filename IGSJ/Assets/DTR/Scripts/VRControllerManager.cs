@@ -292,7 +292,7 @@ public class VRControllerManager : MonoBehaviour
             return;
         }
         // 2
-        if (col.tag == "Interactable" || col.tag == "Battery")
+        if (col.tag == "Interactable" || /*col.tag == "Battery" )*/col.tag == "RedBattery" || col.tag == "BlueBattery" || col.tag == "GreenBattery")
         {
             print(col.name);
             collidingObject = col.gameObject;
@@ -329,6 +329,7 @@ public class VRControllerManager : MonoBehaviour
         // 2
         var joint = AddFixedJoint();
         joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
+        objectInHand.GetComponent<InteractableObject>().isBeingHeld = true;
     }
 
     // 3
@@ -354,6 +355,7 @@ public class VRControllerManager : MonoBehaviour
 
         }
         // 4
+        objectInHand.GetComponent<InteractableObject>().isBeingHeld = false;
         objectInHand = null;
     }
 
